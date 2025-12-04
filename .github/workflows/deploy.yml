@@ -27,12 +27,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./index
+          destination: ./dist
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: |
           npm install
