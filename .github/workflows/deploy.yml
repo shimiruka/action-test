@@ -49,6 +49,11 @@ jobs:
               cp -r "$dir/dist" "dist/$package_name"
             fi
           done
+      - name: Copy root index.html to dist
+        run: |
+          if [ -f index.html ]; then
+            cp index.html dist/
+          fi
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v4
